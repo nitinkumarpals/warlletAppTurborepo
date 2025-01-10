@@ -1,35 +1,51 @@
-import express, { json } from 'express';
-import session from 'express-session';
-import passport from 'passport';
-import cors from 'cors';
-import 'dotenv/config';
-
-import './config/passport';
+import express, { json } from "express";
+import session from "express-session";
+import passport from "passport";
+import cors from "cors";
+import "dotenv/config";
+import "./config/passport";
+import cookieParser from "cookie-parser";
 const app = express();
 const port = 3000;
 app
-  .use(cors())
+  .use(cookieParser())
+  .use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  )
   .use(json())
   .use(
     session({
-      secret: process.env.SESSION_SECRET || '',
+      secret: process.env.SESSION_SECRET || "",
       resave: false,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: false
-      }
+        secure: false,
+      },
     })
   )
   .use(passport.initialize())
   .use(passport.session());
-app.get('/', (req, res) => {
-  res.json({ message: 'ok' });
+app.get("/", (req, res) => {
+  res.json({ message: "ok" });
 });
-import { authRouter } from './routes/auth.routes';
-app.use('/api/v1/auth', authRouter);
-app.get('/session-info', (req, res) => {
-  res.json(req.session);
+import { authRouter } from "./routes/auth.routes";
+import { isAuthenticated } from "./middleware/isAuthenticated";
+import { onRampRouter } from "./routes/onRamp.routes";
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/transactions", onRampRouter);
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/test.html");
+});
+app.get("/session-info", isAuthenticated, (req, res) => {
+  res.json({
+    message: "user have below session",
+    session: req.session,
+    user: req.user,
+  });
 });
 app.listen(port, () => {
   console.log(`App is listening on Port: ${port}`);
