@@ -4,7 +4,7 @@ import passport from "passport";
 import cors from "cors";
 import "dotenv/config";
 import "./config/passport";
-import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";//parse a very long cookie string and return a JavaScript object
 const app = express();
 const port = 3000;
 app
@@ -29,6 +29,7 @@ app
   )
   .use(passport.initialize())
   .use(passport.session());
+
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });

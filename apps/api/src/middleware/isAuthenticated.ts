@@ -6,8 +6,6 @@ export const isAuthenticated = (
   done:any
 ) => {
   const user = req.user;
-  console.log("Session at session-info:", req.session);
-  console.log("User at session-info:", req.user);
   if (user) {
     return done();
   }
