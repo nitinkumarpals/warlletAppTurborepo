@@ -5,7 +5,6 @@ import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import { signInSchema } from "../schemas/signUpSchema";
 import { Profile } from "passport-google-oauth20";
-import { error } from "console";
 
 export const registerUser = async (
   req: Request,

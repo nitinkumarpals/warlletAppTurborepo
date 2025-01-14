@@ -4,7 +4,7 @@ import passport from "passport";
 import cors from "cors";
 import "dotenv/config";
 import "./config/passport";
-import cookieParser from "cookie-parser";//parse a very long cookie string and return a JavaScript object
+import cookieParser from "cookie-parser"; //parse a very long cookie string and return a JavaScript object
 const app = express();
 const port = 3000;
 app
@@ -24,6 +24,8 @@ app
       cookie: {
         httpOnly: true,
         secure: false,
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: "lax",
       },
     })
   )
@@ -43,7 +45,6 @@ app.get("/test", (req, res) => {
 });
 app.get("/session-info", isAuthenticated, (req, res) => {
   res.json({
-    message: "user have below session",
     session: req.session,
     user: req.user,
   });

@@ -3,7 +3,6 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { prisma, User } from "@repo/db/client";
 import { login, loginWithGoogle } from "../controllers/authController";
-import { error } from "console";
 passport.use(
   new LocalStrategy(
     {
@@ -24,18 +23,14 @@ passport.use(
   )
 );
 passport.serializeUser((user: any, done) => {
-  console.log("inside serializeUser");
-  console.log(user);
   if (user) {
     return done(null, user.id);
   }
-  return done(error, false);
+  return done(null, false);
 });
 
 passport.deserializeUser(async (id: string, done) => {
   try {
-    console.log("inside deserializeUser");
-    console.log(`inside deserializeUser with id: ${id}`);
     const user = await prisma.user.findUnique({
       where: { id: Number(id) },
     });

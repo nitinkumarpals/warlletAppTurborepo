@@ -31,6 +31,8 @@ export const onRampTransaction = async (
     });
     res.status(200).json({
       success: true,
+      token,///remove token and user id use razorpay here
+      userId: (req.user as User)?.id,
       message: "onramp transaction added successfully",
     });
     return;

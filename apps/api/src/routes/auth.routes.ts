@@ -22,7 +22,6 @@ authRouter.get(
     });
   }
 );
-
 // authRouter.post('/login',passport.authenticate('local'),(req,res)=>{
 //     const { password, ...userData } = req.user as User;
 //     res.status(200).json({
@@ -65,6 +64,10 @@ authRouter.post("/login", (req: Request, res: Response, next) => {
 });
 
 authRouter.get("/logout", (req, res) => {
+  if(!req.user){
+     res.status(401).json({ message: "User is not authenticated" });
+     return;
+  }
   req.logout((err) => {
     if (err) {
       return res
