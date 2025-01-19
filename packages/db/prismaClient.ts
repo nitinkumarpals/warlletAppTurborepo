@@ -1,3 +1,3 @@
-import { PrismaClient, User,OnRampTransaction } from "@prisma/client";
+import { PrismaClient, User, OnRampTransaction } from "@prisma/client";
 export const prisma = new PrismaClient();
-export type { User,OnRampTransaction };
+export type { User, OnRampTransaction };

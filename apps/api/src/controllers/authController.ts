@@ -68,7 +68,18 @@ export const registerUser = async (
       return;
     }
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword, authType: "CREDENTIALS" },
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+        authType: "CREDENTIALS",
+        Balance: {
+          create: {
+            amount: 10000,
+            locked: 0,
+          },
+        },
+      },
     });
     if (!user) {
       res.status(500).json({
@@ -121,7 +132,9 @@ export const login = async (
     }
     const isMatch = await bcrypt.compare(password, user.password || "");
     if (!isMatch) {
-      return done(new Error("Invalid credentials"), false, { message: "Invalid credentials" });
+      return done(new Error("Invalid credentials"), false, {
+        message: "Invalid credentials",
+      });
     }
     return done(null, user);
   } catch (error: Error | any) {
@@ -162,6 +175,12 @@ export const loginWithGoogle = async (
           name: profile.displayName,
           authType: "GOOGLE",
           googleId: profile.id,
+          Balance: {
+            create: {
+              amount: 10000,
+              locked: 0,
+            },
+          },
         },
       });
     } else user = existingUser;

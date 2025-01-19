@@ -38,8 +38,10 @@ app.get("/", (req, res) => {
 import { authRouter } from "./routes/auth.routes";
 import { isAuthenticated } from "./middleware/isAuthenticated";
 import { onRampRouter } from "./routes/onRamp.routes";
+import { p2pRouter } from "./routes/p2p.routes";
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/transactions", onRampRouter);
+app.use("/api/v1/p2p", p2pRouter);
 app.get("/test", (req, res) => {
   res.sendFile(__dirname + "/test.html");
 });

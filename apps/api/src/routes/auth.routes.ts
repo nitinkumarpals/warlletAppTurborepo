@@ -3,7 +3,6 @@ import { registerUser } from "../controllers/authController";
 import { Request, Response } from "express";
 import passport from "passport";
 import { User } from "@repo/db/client";
-import jwt, { JwtPayload } from "jsonwebtoken";
 export const authRouter = Router();
 authRouter.post("/signup", registerUser);
 
