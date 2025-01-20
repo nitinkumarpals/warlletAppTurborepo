@@ -17,7 +17,8 @@ export const p2pTransfer = async (
       });
       return;
     }
-    const { amount, to } = parsedBody.data;
+    const { to } = parsedBody.data;
+    const amount = parsedBody.data.amount * 100;
     const from = (req.user as User).id;
     const toUser = await prisma.user.findFirst({
       where: {
@@ -38,6 +39,9 @@ export const p2pTransfer = async (
           userId: from,
         },
       });
+      console.log("before sleep");
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      console.log("after sleep");
       if (!fromBalance || fromBalance.amount < amount) {
         throw new Error("Insufficient balance");
       }
@@ -68,6 +72,7 @@ export const p2pTransfer = async (
       },
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: (error as Error).message,
