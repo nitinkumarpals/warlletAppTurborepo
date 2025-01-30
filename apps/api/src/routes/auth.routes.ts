@@ -15,10 +15,7 @@ authRouter.get(
   passport.authenticate("google", { failureMessage: "failed" }),
   (req, res) => {
     const { password, ...userData } = req.user as User;
-    res.status(200).json({
-      message: "Login successful",
-      user: userData,
-    });
+    res.redirect("http://localhost:3001/");
   }
 );
 // authRouter.post('/login',passport.authenticate('local'),(req,res)=>{
