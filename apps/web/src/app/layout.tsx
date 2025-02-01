@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
+
 import { UserSessionProvider } from "@/context/UserSessionContext";
 import { Toaster } from "@/components/ui/toaster";
 const geistSans = Geist({
@@ -29,7 +29,6 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} `}>
         <UserSessionProvider>
           <div className="min-w-screen min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-            <Navbar></Navbar>
             {children}
             <Toaster />
           </div>

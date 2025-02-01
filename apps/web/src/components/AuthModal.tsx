@@ -118,27 +118,28 @@ export function AuthModal({
   const onSignupSubmit: SubmitHandler<SignupFormValues> = async (data) => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:3000/api/v1/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/auth/signup",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Signup failed");
       }
-
-      const result = await response.json();
+      const result = response.data;
       console.log("Signup successful", result);
       toast({
         title: "Signup Successful",
-        description: "Welcome to WalletApp!",
+        description: "Now you can log in to WalletApp!",
         variant: "default",
       });
+      router.refresh();
       onClose();
-      window.location.reload();
     } catch (error) {
       console.error("Signup error", error);
       toast({
