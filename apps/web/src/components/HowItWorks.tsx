@@ -4,26 +4,28 @@ import { motion } from "framer-motion";
 
 const steps = [
   {
-    title: "Sign Up",
+    title: "Simple Sign-Up",
     description:
-      "Create your account in minutes. All you need is your email and a secure password.",
+      "Get started in minutes by creating your WalletApp account with just your email or a quick Google login.",
   },
   {
-    title: "Link Your Bank",
+    title: "Easy Fund Addition",
     description:
-      "Securely connect your existing bank account to start funding your WalletApp.",
+      "Top up your account effortlessly using your favorite payment methods like Debit Card, Credit Card, or UPI through Razorpay, all secured with advanced protection.",
   },
   {
-    title: "Start Transacting",
+    title: "Instant Money Transfers",
     description:
-      "Send money, pay bills, or set up recurring payments with just a few taps.",
+      "Send money to friends, family, or colleagues with just a few taps. Enjoy fast, reliable transfers every time.",
   },
   {
-    title: "Manage Your Finances",
+    title: "Smart Financial Management",
     description:
-      "Use our built-in tools to track your spending, set budgets, and grow your savings.",
+      "Track your spending, set budgets, and watch your savings grow with our intuitive financial tools. Stay informed with real-time transaction details and balance updates.",
   },
 ];
+
+
 
 export default function HowItWorks() {
   return (

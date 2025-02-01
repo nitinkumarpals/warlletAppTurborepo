@@ -95,8 +95,8 @@ export default function Navbar({ openAuthModal }: NavbarProps) {
             ) : (
               <>
                 <Button
-                  variant="outline"
-                  className="mr-2 text-white border-white hover:bg-white hover:text-gray-900"
+                  variant="default"
+                  className="mr-2 text-black bg-white hover:bg-blue-200 hover:text-gray-900"
                   onClick={() => openAuthModal("login")}
                 >
                   Log in
@@ -175,8 +175,8 @@ export default function Navbar({ openAuthModal }: NavbarProps) {
               ) : (
                 <>
                   <Button
-                    variant="outline"
-                    className="mr-2 text-white border-white hover:bg-white hover:text-gray-900 w-full"
+                    variant="default"
+                    className="mr-2 text-black bg-white hover:bg-blue-200 hover:text-gray-900 w-full"
                     onClick={() => openAuthModal("login")}
                   >
                     Log in

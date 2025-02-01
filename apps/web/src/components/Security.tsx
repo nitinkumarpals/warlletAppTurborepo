@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 
 const securityFeatures = [
   {
-    name: "End-to-End Encryption",
+    name: "Safe and Secure Payments",
     description:
-      "All your data and transactions are protected with military-grade encryption.",
+      "We've got you covered with our secure payment system, designed to protect your money and keep your transactions safe.",
     icon: Lock,
   },
   {
-    name: "Fraud Protection",
+    name: "Extra Layer of Protection",
     description:
-      "Our AI-powered system detects and prevents fraudulent activities in real-time.",
+      "Our unique dual backend system adds an extra layer of security to prevent unauthorized access and keep your data safe.",
     icon: Shield,
   },
   {
-    name: "24/7 Monitoring",
+    name: "Top-Notch Encryption",
     description:
-      "Our security team monitors your account around the clock to ensure your money is always safe.",
+      "We use the latest encryption technology to safeguard your sensitive information and keep your transactions private.",
     icon: AlertTriangle,
   },
 ];

@@ -92,19 +92,19 @@ export default function Hero({ openAuthModal }: HeroProps) {
                     Account Balance
                   </div>
                   <div className="text-3xl font-bold text-blue-600 mb-4">
-                    $12,345.67
+                    ₹12,345.67
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">Savings</span>
                       <span className="font-medium text-gray-900">
-                        $5,000.00
+                        ₹5,000.00
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">Investments</span>
                       <span className="font-medium text-gray-900">
-                        $7,345.67
+                        ₹7,345.67
                       </span>
                     </div>
                   </div>
@@ -115,18 +115,18 @@ export default function Hero({ openAuthModal }: HeroProps) {
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-sm">
                         <span className="text-gray-600">Coffee Shop</span>
-                        <span className="font-medium text-red-600">-$4.50</span>
+                        <span className="font-medium text-red-600">-₹4.50</span>
                       </div>
                       <div className="flex justify-between items-center text-sm">
                         <span className="text-gray-600">Salary Deposit</span>
                         <span className="font-medium text-green-600">
-                          +$3,000.00
+                          +₹3,000.00
                         </span>
                       </div>
                       <div className="flex justify-between items-center text-sm">
                         <span className="text-gray-600">Electric Bill</span>
                         <span className="font-medium text-red-600">
-                          -$85.20
+                          -₹85.20
                         </span>
                       </div>
                     </div>
